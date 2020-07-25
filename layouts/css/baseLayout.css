@@ -1,0 +1,85 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    /* > 16 and < 20.5; inbetween use 10px + 0.7vw.
+    20.5 equals 10px + 0.7vw * 1500 – growing stops therefore at 1500px, our max breakpoint
+    where the layout also stops growing */
+    --base-100: min(20.5px, max(16px, calc(10px + 0.7vw)));
+    --base-125: calc(var(--base-100) * 1.25);
+    --base-150: calc(var(--base-100) * 1.5);
+    --base-200: calc(var(--base-100) * 2);
+    --base-050: calc(var(--base-100)  / 2);
+    --base-025: calc(var(--base-100)  / 4);
+}
+
+h1 {
+    font-size: var(--base-200);
+    margin-bottom: var(--base-125);
+    margin-top: var(--base-200);
+}
+
+h1:first-child {
+    margin-top: var(--base-050);
+}
+
+h2 {
+    font-size: var(--base-150);
+}
+
+h2:first-child {
+    margin-top: var(--base-025);
+}
+
+p {
+    font-size: calc(var(--base-100));
+    /* Line height in relation to element's width */
+    line-height: var(--base-150);
+}
+
+.content {
+    box-sizing: border-box;
+    padding: var(--base-200);
+    margin: 0 auto;
+    background-color: rgb(240, 220, 220);
+    /*overflow: auto; /* Prevent Margin Collapse */
+}
+
+@media (max-width: 599px) {
+    .content {
+        width: 100%;
+    }
+}
+
+@media (min-width: 600px) {
+    .content {
+        min-width: 599px; /* no break between 599 and 600 */
+        width: 90%;
+    }
+}
+
+@media (min-width: 1500px) {
+    .content {
+        width: 1350px;
+    }
+}
+
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(calc(160px + 12vw), 1fr));
+    gap: var(--base-200);
+}
+
+.grid-item {
+    background-color: salmon;
+    box-sizing: border-box;
+    padding: var(--base-150);
+    border-radius: var(--base-025);
+}
+
+.grid-item p {
+    line-height: var(--base-125);
+}
