@@ -69,7 +69,8 @@ p {
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(calc(160px + 12vw), 1fr));
+    /* Use min to make sure cols are not reduced above 1500px. 340px equals 160px + 0.12 * 1500 */
+    grid-template-columns: repeat(auto-fit, minmax(min(calc(160px + 12vw), 340px), 1fr));
     gap: var(--base-200);
 }
 
