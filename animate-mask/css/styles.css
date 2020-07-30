@@ -1,0 +1,101 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+article {
+    /* Grid à la Felix */
+    float: left;
+    width: 400px;
+    margin-right: 10px;
+    position: relative;
+  }
+  
+  .image-container {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    overflow: hidden;
+  }
+  
+  .background {
+    z-index: -3;
+  }
+  
+  
+  article h2,
+  article p {
+    opacity: 0;
+    transition: all 0.7s cubic-bezier(0.2, 0.9, 0.4, 1);
+  }
+  
+  article p {
+    transition-duration: 1.4s;
+  }
+  
+  article h2 {
+    transform: translateY(-20px);
+    transition-delay: 0.3s;
+  }
+  
+  
+  article p {
+    transform: translateY(-15px);
+    transition-delay: 0.5s;
+  }
+  
+  /* Delay only for relveal animation, not for hover */
+  article.hover p,
+  article.hover h2 {
+    transition-delay: 0s;
+  }
+  
+  article.visible h2,
+  article.visible p {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  article:hover h2 {
+    transform: translateY(-3px);
+  }
+  article:hover p {
+    transform: translateY(-6px);
+  }
+
+  
+  .image-container {
+    transition: clip-path 0.95s cubic-bezier(0.2, 0.9, 0.4, 1);
+    clip-path: inset(6% 0 95% 0);
+  }
+
+  article.visible .image-container {
+    clip-path: inset(6% 0 0 0);
+  }
+
+  article.visible:hover .image-container {
+    clip-path: inset(0 0 0 0);
+  }
+
+  /* same time for all hover effects */
+  article.hover p,
+  article.hover h2,
+  article.hover .image {
+    transition-duration: 0.7s;
+  }
+  
+  .background {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 140%;
+    height: 100%;
+    background-color: #e6e5c8;
+    clip-path: inset(0 0 100% 0);
+  }
+
+  article.visible .background {
+      clip-path: inset(0 0 0 0);
+      transition: clip-path 1.4s cubic-bezier(0.2, 0.9, 0.4, 1);
+      transition-delay: 0.3s;
+    }
