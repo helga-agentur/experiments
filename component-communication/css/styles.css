@@ -1,0 +1,18 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+counter-component {
+    display: block;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid greenyellow;
+    border-radius: 5px;
+}
+
+counter-button {
+    display: inline-block;
+    background-color: greenyellow;
+    padding: 10px;
+}
