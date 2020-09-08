@@ -1,0 +1,31 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+.circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    background-color: beige;
+    position: absolute;
+    transition: all 0.6s cubic-bezier(.4,.35,.19,1);
+}
+
+.page {
+    z-index: 1;
+    transition: opacity, 1.2s  cubic-bezier(.4,.35,.19,1);
+    opacity: 0;
+    position: relative;
+    box-sizing: border-box;
+    min-height: 80vh;
+    padding: 25vh 20vw ;
+}
+
+.page.visible {
+    opacity: 1;
+}
+
+p {
+    line-height: 1.6;
+}
