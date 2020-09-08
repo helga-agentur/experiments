@@ -1,0 +1,21 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+svg {
+    width: 100vw;
+    /* Min at 540px, max at 1200px */
+    /* Min 16px, max 80px */
+    height: max(16px, min(80px, calc(-36.35px + 9.696vw)));
+    display: block;
+}
+
+svg ellipse {
+    fill: crimson;
+}
+
+.bg {
+    background-color: crimson;
+    height: 100px;
+}
