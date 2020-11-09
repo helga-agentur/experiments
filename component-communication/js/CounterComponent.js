@@ -1,34 +1,23 @@
 import CounterModel from './CounterModel.js';
+import canReceiveRegistrations from './containsModel.js';
+import canScheduleDOM from './updateDOM.js';
 
 class CounterComponent extends HTMLElement {
-
-    dependentComponents = [];
 
     constructor() {
         super();
         this.model = new CounterModel();
         this.number = this.querySelector('.number');
-        this.setupRegisterElementEventListener();
+        Object.assign(
+            this,
+            canScheduleDOM(),
+            canReceiveRegistrations({ eventTarget: this, eventName: 'register-element'}),
+        );
+
         this.scheduleDOMUpdate();
-        this.setupModelListener();
-    }
-
-    setupRegisterElementEventListener() {
-        this.addEventListener('register-element', this.handleRegisterElement)
-    }
-
-    handleRegisterElement(ev) {
-        const { element } = ev.detail;
-        this.dependentComponents.push(element);
-        element.setModel(this.model);
-    }
-
-    setupModelListener() {
         this.model.on('update', this.scheduleDOMUpdate.bind(this));
-    }
+        this.listenToDependentComponents();
 
-    scheduleDOMUpdate() {
-        this.raf = requestAnimationFrame(this.updateDOM.bind(this));
     }
 
     updateDOM() {

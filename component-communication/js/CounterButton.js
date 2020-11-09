@@ -1,45 +1,33 @@
+import canRegister from './isDependentComponent.js';
+import canScheduleDOM from './updateDOM.js';
+
 class CounterButton extends HTMLElement {
 
     constructor() {
         super();
-        this.addClickListener();
         this.result = this.querySelector('.result');
+
+        Object.assign(
+            this,
+            canScheduleDOM(),
+            canRegister({ eventName: 'register-element' }),
+        );
+        this.addClickListener();
+    }
+
+    onModelChange() {
+        this.model.on('update', this.scheduleDOMUpdate.bind(this));
+        this.scheduleDOMUpdate();
     }
 
     connectedCallback() {
-        const event = new CustomEvent('register-element', {
-            bubbles: true,
-            detail: { element: this },
-        });
-        // Short delay to make sure event listeners are ready
-        setTimeout(() => this.dispatchEvent(event));
-    }
-
-    disconnectedCallback() {
-        const event = new CustomEvent('unregister-element', {
-            bubbles: true,
-            detail: { element: this },
-        });
-        this.dispatchEvent(event);
+        this.register();
     }
 
     addClickListener() {
         this.addEventListener('click', () => {
             if (this.model) this.model.add();
         });
-    }
-
-    setModel(model) {
-        this.model = model;
-        this.setupModelListeners();
-    }
-
-    setupModelListeners() {
-        this.model.on('update', this.scheduleDOMUpdate.bind(this));
-    }
-
-    scheduleDOMUpdate() {
-        this.raf = requestAnimationFrame(this.updateDOM.bind(this));
     }
 
     updateDOM() {

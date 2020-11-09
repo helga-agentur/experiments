@@ -36,7 +36,7 @@ body {
 
 .btn-hover.animated {
     /* Only animate when needed – we must be able to change clip-path's center without animation */
-    transition: clip-path 0.6s cubic-bezier(0.4,0.3,0.7,1);
+    transition: clip-path 0.38s cubic-bezier(0.4,0.3,0.7,1);
 }
 
 .btn:hover .btn-hover {

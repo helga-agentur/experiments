@@ -16,7 +16,12 @@ button.addEventListener('mouseenter', (ev) => {
 button.addEventListener('mouseleave', (ev) => {
     const { offsetX, offsetY, currentTarget } = ev;
     const hoverButton = currentTarget.querySelector('.btn-hover');
-    hoverButton.style.clipPath = `circle(0% at ${offsetX}px ${offsetY}px)`;
+    // Adjust position so that end position is outside the button (appears more natural)
+    const { height, width } = hoverButton.getBoundingClientRect();
+    const adjustOffsetBy = 20;
+    const adjustedOffsetX = offsetX > width / 2 ? offsetX + adjustOffsetBy : offsetX - adjustOffsetBy;
+    const adjustedOffsetY = offsetY > height / 2 ? offsetY + adjustOffsetBy : offsetY - adjustOffsetBy;
+    hoverButton.style.clipPath = `circle(0% at ${adjustedOffsetX}px ${adjustedOffsetY}px)`;
     const removeAnimated = () => {
         hoverButton.classList.remove('animated');
         hoverButton.removeEventListener('transitionend', removeAnimated);

@@ -1,0 +1,35 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    position: fixed;
+    top: 40px;
+    left: 40px;
+    color: white;
+    font-size: 72px;
+    padding: 0;
+    margin: 0;
+    transition: color 0.2s ease-in-out;
+}
+
+.section-1 {
+    background-color: orangered;
+    height: 80vh;
+}
+
+.section-2 {
+    background-color: darkcyan;
+    height: 120vh;
+}
+
+.section-3 {
+    background-color: goldenrod;
+    height: 140vh;
+}
+
+.section-4 {
+    background-color: orangered;
+    height: 100vh;
+}
