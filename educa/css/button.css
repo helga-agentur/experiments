@@ -7,36 +7,32 @@ body {
     /* needed for absolutely positioned children */
     position: relative;
     cursor: pointer;
+    font-size: 18px;
 }
 
-.btn-default,
-.btn-hover {
-    font-size: 18px;
+.btn-content {
     position: absolute;
     padding: 10px 30px;
     border-radius: 500px;
     /* @Fabian: why does text break so stupidly in absolutely positioned spans */
     width: max-content;
-}
-
-.btn-default {
     background-color: crimson;
     color: white;
     z-index: 0;
 }
 
-.btn-hover {
+.btn-content.hover {
     background-color: #f1a1b1;
     color: #6e0a1e;
     z-index: 1;
     /* hide */
     clip-path: circle(0px at center);
     pointer-events: none;
+    transition: clip-path 0.38s cubic-bezier(0.4,0.3,0.7,1);
 }
 
-.btn-hover.animated {
+.btn-content.animated {
     /* Only animate when needed – we must be able to change clip-path's center without animation */
-    transition: clip-path 0.38s cubic-bezier(0.4,0.3,0.7,1);
 }
 
 .btn:hover .btn-hover {
