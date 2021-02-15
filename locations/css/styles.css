@@ -1,0 +1,23 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+section {
+    padding: 20px;
+    margin: 10px;
+    border: 1px solid #ccc;
+}
+
+.is-selected button {
+    background-color: lightsalmon;
+}
+
+address {
+    display: none;
+}
+
+.is-selected address {
+    display: block;
+}
+
