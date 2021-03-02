@@ -11,15 +11,25 @@ body {
 }
 
 .btn-content {
+    display: block;
     position: absolute;
+    top: 0;
+    left: 0;
     padding: 10px 30px;
+    box-sizing: border-box;
     border-radius: 500px;
     /* @Fabian: why does text break so stupidly in absolutely positioned spans */
     width: max-content;
     background-color: crimson;
     color: white;
     z-index: 0;
+    margin-bottom: 20px;
 }
+
+.btn-content:first-child {
+    position: relative;
+}
+
 
 .btn-content.hover {
     background-color: #f1a1b1;

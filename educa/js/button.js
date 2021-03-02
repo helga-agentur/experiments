@@ -1,4 +1,3 @@
-const button = document.querySelector('.btn');
 
 class EducaButton {
 
@@ -25,6 +24,20 @@ class EducaButton {
         const clone = children[0].cloneNode(true);
         clone.setAttribute('aria-hidden', true);
         clone.classList.add('hover');
+        // Replace input[type=submit] with a span to not have more than 1 submit button per form:
+        // - create span
+        // - set textContent to value attribute of input
+        // - clone all attributes except for value and type
+        const inputButtons = clone.querySelectorAll('input[type=\'submit\']');
+        [...inputButtons].forEach(inputButton => {
+            const span = document.createElement('span');
+            span.textContent = inputButton.getAttribute('value');
+            for (const attribute of inputButton.attributes) {
+                if (['value', 'type'].includes(attribute.nodeName)) continue;
+                span.setAttribute(attribute.nodeName, attribute.nodeValue);
+            }
+            inputButton.outerHTML = span.outerHTML;
+        });
         this.#hoverContent = clone;
         this.#element.insertBefore(clone, null);
     }
@@ -75,8 +88,11 @@ class EducaButton {
 
 }
 
-const btn = new EducaButton({ element: button });
-btn.init();
+const buttons = [...document.querySelectorAll('.btn')];
+buttons.forEach(button => {
+    const component = new EducaButton({ element: button });
+    component.init();
+});
 
 
 
