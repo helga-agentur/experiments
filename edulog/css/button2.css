@@ -1,0 +1,165 @@
+.btn {
+    position: relative;
+    margin: 40px;
+    border: 0;
+    font-family: Helvetica;
+    padding: 14px 24px;
+    font-size: 18px;
+    transition: transform 0.3s cubic-bezier(0.2, 0.3, 0.2, 1);
+    box-sizing: border-box;
+}
+
+.btn--primary {
+    background-color: #002654;
+    color: #32E0A2;
+}
+
+.btn--secondary {
+    border: 2px solid #002654;
+    color: #002654;
+    background-color: white;
+    /* outline: 1px solid transparent; */
+}
+
+.btn:after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 8px;
+    transform-origin: left;
+    z-index: 20;
+    transform: scaleX(0);
+    opacity: 0;
+    transition: transform 0.5s cubic-bezier(0.2, 0.3, 0.2, 1), opacity 0.3s cubic-bezier(0.2, 0.3, 0.2, 1);
+}
+
+.btn--primary:after {
+    background-color: #32E0A2;
+}
+
+.btn--secondary:after {
+    background-color: #002654;
+}
+
+.btn:hover,
+.btn:focus {
+    transform: translateX(4px);
+    outline: none;
+}
+
+.btn--secondary:hover,
+.btn--secondary:focus {
+    transform: translateX(4px);
+    /* outline: 1px solid #002654; */
+}
+
+.btn:hover:after,
+.btn:focus:after {
+    transform: scaleX(1) translateX(-0px);
+    opacity: 1;
+}
+
+
+.row {
+    margin: 20px;
+    display: flex;
+    margin-bottom: 80px;
+}
+
+.card {
+    position: relative;
+    font-family: Helvetica;
+    width: 20%;
+    margin-right: 8%;
+    line-height: 1.5;
+    transition: transform 0.3s cubic-bezier(0.2, 0.3, 0.2, 1);
+    cursor: pointer;
+}
+
+/* .card:after {
+    left: -20px;
+} */
+
+.card:hover,
+.card:focus {
+    /* transform: translateX(6px); */
+}
+
+.row1 .card:hover {
+    transform: translateX(8px)
+}
+
+
+.row2 .card > * {
+    transition: transform 0.2s cubic-bezier(0.2, 0.1, 0.7, 1)
+}
+
+h1 {
+    font-size: 24px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    display: block;
+}
+/* 
+.card img {
+    position: relative;
+} */
+
+.card img {
+    max-width: 100%;
+    transition: transform 0.3s cubic-bezier(0.2, 0.3, 0.2, 1);
+}
+
+.card .image {
+    position: relative;
+    overflow: hidden;
+}
+
+.card .image:after {
+    content: '';
+    z-index: 5;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 0.2;
+    background-color:#fff;
+    mix-blend-mode: hard-light;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s cubic-bezier(0.2, 0.3, 0.2, 1);
+}
+
+.card:hover img {
+    transform: translateX(-8px);
+}
+
+.card:hover .image:after {
+    transform: scaleX(1);
+}
+
+.row2 .card:hover > * {
+    transform: translateX(8px);
+}
+
+
+.row2 .card h1 {
+    transition-delay: 0.03s;
+    transition-duration: 0.22s;
+}
+
+.row2 .card p {
+    transition-delay: 0.05s;
+    transition-duration: 0.24s;
+}
+
+.row2 .card a {
+    transition-delay: 0.08s;
+    transition-duration: 0.26s;
+}
