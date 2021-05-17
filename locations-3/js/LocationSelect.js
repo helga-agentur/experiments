@@ -1,4 +1,5 @@
 import { createObserver } from './createObserver.js';
+import { eventName } from './eventConfig.js';
 
 class LocationSelect extends HTMLElement{
 
@@ -6,7 +7,7 @@ class LocationSelect extends HTMLElement{
 
     constructor() {
         super();
-        Object.assign(this, createObserver(['updateLocation']));
+        Object.assign(this, createObserver([eventName]));
     }
     
     connectedCallback() {
@@ -31,7 +32,7 @@ class LocationSelect extends HTMLElement{
 
     handleLocationChange(locationName) {
         const eventOptions = { bubbles: true, detail: { locationName: this.#select.value }};
-        this.dispatchEvent(new CustomEvent('updateLocation', eventOptions));
+        this.dispatchEvent(new CustomEvent(eventName, eventOptions));
     }
 
 }

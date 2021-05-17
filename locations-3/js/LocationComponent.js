@@ -1,10 +1,11 @@
 import { createObservable } from './createObserver.js';
+import { eventName } from './eventConfig.js';
 
 class LocationComponent extends HTMLElement{
 
     constructor() {
         super();
-        Object.assign(this, createObservable(['updateLocation']));
+        Object.assign(this, createObservable([eventName]));
         this.listen();
     }
 

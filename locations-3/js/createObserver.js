@@ -1,8 +1,8 @@
 /**
  * @param {string[]} observerIdentifiers     Names of events to handle (that are emitted by children)
- * @param {string} updateMethodName          Name of the update method in 
+ * @param {boolean} stopPropagation          TBD: True if (register/main event?) shall not continue bubbling??
  */
-const createObservable = (observerTypes) => ({
+const createObservable = (observerTypes, stopPropagation) => ({
 
     handlers: new Map(),
 

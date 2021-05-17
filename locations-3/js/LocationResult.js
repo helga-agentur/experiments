@@ -1,4 +1,5 @@
 import { createObserver } from './createObserver.js';
+import { eventName } from './eventConfig.js';
 
 class LocationResult extends HTMLElement{
 
@@ -6,7 +7,7 @@ class LocationResult extends HTMLElement{
     
     constructor() {
         super();
-        Object.assign(this, createObserver(['updateLocation']));
+        Object.assign(this, createObserver([eventName]));
     }
     
     connectedCallback() {
