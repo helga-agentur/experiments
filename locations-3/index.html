@@ -1,0 +1,73 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Another Experiment</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        section {
+            padding: 20px;
+            margin: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .is-selected button {
+            background-color: lightsalmon;
+        }
+
+        address {
+            display: none;
+        }
+
+        .is-selected address {
+            display: block;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <h1>Test</h1>
+    <location-component>
+        <section>
+            <location-select>
+                <select>
+                    <!-- Selected defines our preselection – not the JavaScript-->
+                    <option value="biel">Biel</option>
+                    <option value="bern" selected>Bern</option>
+                </select>
+            </location-select>
+        </section>
+        <section>
+            <location-map-point data-location="biel">
+                <button>Biel</button>
+            </location-map-point>
+            <location-map-point data-location="bern">
+                <button>Bern</button>
+            </location-map-point>
+        </section>
+        <section>
+            <location-result data-location="biel">
+                <address>RUAG Biel</address>
+            </location-result>
+            <location-result data-location="bern">
+                <address>RUAG Bern</address>
+            </location-result>
+        </section>
+    </location-component>
+
+    <!-- Order counts! -->
+    <script type="module" src="js/LocationComponent.js"></script>
+    
+    <script type="module" src="js/LocationMapPoint.js"></script>
+    <script type="module" src="js/LocationResult.js"></script>
+    <script type="module" src="js/LocationSelect.js"></script>
+
+</body>
+
+</html>
