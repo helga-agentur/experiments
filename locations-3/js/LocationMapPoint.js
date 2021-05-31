@@ -7,8 +7,11 @@ class LocationMapPoint extends HTMLElement{
 
     constructor() {
         super();
+        Object.assign(
+            this,
+            createObserver({ observerTypes: [eventName], updateFunction: this.render.bind(this) }),
+        );
         this.#identifier = this.dataset.location;
-        Object.assign(this, createObserver([eventName], this.update.bind(this)));
     }
     
     connectedCallback() {
@@ -16,7 +19,7 @@ class LocationMapPoint extends HTMLElement{
         this.setupClickListeners();
     }
 
-    update(type, { locationName }) {
+    render(type, { locationName }) {
         const method = this.#identifier === locationName ? 'add' : 'remove';
         requestAnimationFrame(() => this.classList[method]('is-selected'));
     }

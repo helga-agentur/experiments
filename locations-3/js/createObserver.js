@@ -1,9 +1,16 @@
 /**
- * @param {string[]} observerIdentifiers     Names of events to handle (that are emitted by children)
- * @param {boolean} stopPropagation          TBD: True if (register/main event?) shall not continue bubbling??
+ * @param {string[]} observerIdentifiers    Names of events to handle (that are emitted by children)
+ * @param {function} modifyEventData        Function that updates event data before it is sent
+ *                                          to observers
  */
-const createObservable = (observerTypes, stopPropagation) => ({
+const createObservable = ({ observerTypes, modifyEventData = data => data } = {}) => ({
 
+    /**
+     * Bsp:
+     * new Map([
+     * ['updateLocation', [fn(), fn()]]
+     * ])
+     */
     handlers: new Map(),
 
     listenToRegistrations() {
@@ -27,12 +34,7 @@ const createObservable = (observerTypes, stopPropagation) => ({
     handleEvent(event) {
         const { type, detail } = event;
         if (!this.handlers.has(type)) return;
-        // TODO: Add optional handler
-        // Maybe use method name convention? 'modifyUpdateLocationData'?
-        // Maybe use fix function modifyData(type, data)?
-        const modifiedDetail = (this.modifyData) ? this.modifyData(type, detail) : detail;
-        console.log('moddetail is', this.modifiedDetail);
-        this.handlers.get(type).forEach(handler => handler(type, modifiedDetail));
+        this.handlers.get(type).forEach(handler => handler(type, modifyEventData(detail)));
     },
 
 });
@@ -42,7 +44,7 @@ const createObservable = (observerTypes, stopPropagation) => ({
 /**
  * @param {string[]} observerTypes   E.g. ['updateLocation']   
  */
-const createObserver = (observerTypes, updateFunction) => ({
+const createObserver = ({ observerTypes, updateFunction } = {}) => ({
 
     /**
      * Dispatches an event to register an observer for every type we're listening to
