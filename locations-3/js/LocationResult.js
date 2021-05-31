@@ -7,7 +7,7 @@ class LocationResult extends HTMLElement{
     
     constructor() {
         super();
-        Object.assign(this, createObserver([eventName]));
+        Object.assign(this, createObserver([eventName], this.update.bind(this)));
     }
     
     connectedCallback() {

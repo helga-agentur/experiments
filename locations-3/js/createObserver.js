@@ -42,7 +42,7 @@ const createObservable = (observerTypes, stopPropagation) => ({
 /**
  * @param {string[]} observerTypes   E.g. ['updateLocation']   
  */
-const createObserver = (observerTypes) => ({
+const createObserver = (observerTypes, updateFunction) => ({
 
     /**
      * Dispatches an event to register an observer for every type we're listening to
@@ -53,20 +53,11 @@ const createObserver = (observerTypes) => ({
                 bubbles: true,
                 detail: {
                     type,
-                    callback: this.update.bind(this),
+                    callback: updateFunction,
                 },
             }))
             .forEach(option => this.dispatchEvent(new CustomEvent('registerObserver', option)))
     },
-
-    // just on child
-    // update(type, data) {
-    // },
-
-    // // just on child
-    // handleSomeEvent() {
-    //     this.dispatchEvent(new CustomEvent('updateLocation', { bubbles: true, detail: 'bern' }));
-    // }
 
 });
 

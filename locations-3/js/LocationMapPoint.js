@@ -8,7 +8,7 @@ class LocationMapPoint extends HTMLElement{
     constructor() {
         super();
         this.#identifier = this.dataset.location;
-        Object.assign(this, createObserver([eventName]));
+        Object.assign(this, createObserver([eventName], this.update.bind(this)));
     }
     
     connectedCallback() {
