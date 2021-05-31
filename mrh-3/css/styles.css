@@ -1,0 +1,86 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    --easing: cubic-bezier(0.3, 0.1, 0.2, 1);
+}
+
+.intro {
+    background-color: #003C6E;
+    position: relative;
+    height: calc(100vh + 200px);
+    background-color:rgba(0,60,110,1);
+    transition: background-color 1.7s var(--easing);
+}
+
+.scrolled .intro {
+    background-color: rgba(168,233,177,1);
+}
+
+.intro-text {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    font-size: 8rem;
+    color: #A8E9B1;
+}
+
+.intro-text span {
+    position: relative;
+    display: block;
+    clip-path: inset(0% 0% 0% 0%);
+    transition: transform 0.9s var(--easing), clip-path 1.2s var(--easing), opacity 0.9s var(--easing);
+    transition-delay: 0.5s;
+}
+
+.intro-text span:first-child {
+    transition-delay: 0.6s;
+}
+
+.scrolled .intro-text span {
+    transition-delay: 0s;
+}
+
+.scrolled .intro-text span {
+    transform: translateY(-6rem);
+    opacity: 0;
+    clip-path: inset(0px 0px 100% 0px);
+    transition-delay: 0s;
+}
+.scrolled .intro-text span:last-child {
+    transition-delay: 0.1s;
+}
+
+.cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    right: 0;
+}
+
+.page-2 {
+    position: absolute;
+    top: 40%;
+    left: 0;
+    height: 100vh;
+    right: 0;
+}
+
+.lead {
+    margin: 4rem;
+    font-size: 2rem;
+    font-family:Arial, Helvetica, sans-serif;
+    color: #003C6E;
+    opacity: 0;
+    transition: opacity 1s var(--easing);
+    transition-delay: 0;
+}
+
+.scrolled .lead {
+    opacity: 1;
+    transition-delay: 0.8s;
+}
+
+.content {
+    height: 200vh;
+}
