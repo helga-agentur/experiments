@@ -3,6 +3,13 @@
  * @param {function} modifyEventData        Function that updates event data before it is sent
  *                                          to observers
  */
+
+// Use symbols as property/method names to not expose them to «child» classes
+const listenToRegistrations = Symbol('listenToRegistrations');
+const handleObserverRegistration = Symbol('handleObserverRegistration');
+const handleEvent = Symbol('handleEvent');
+const handlers = Symbol('handlers');
+
 const createObservable = ({ observerTypes, modifyEventData = data => data } = {}) => ({
 
     /**
@@ -11,30 +18,30 @@ const createObservable = ({ observerTypes, modifyEventData = data => data } = {}
      * ['updateLocation', [fn(), fn()]]
      * ])
      */
-    handlers: new Map(),
+    [handlers]: new Map(),
 
-    listenToRegistrations() {
-        this.addEventListener('registerObserver', this.handleObserverRegistration.bind(this));
+    [listenToRegistrations]() {
+        this.addEventListener('registerObserver', this[handleObserverRegistration].bind(this));
     },
 
-    handleObserverRegistration(event) {
+    [handleObserverRegistration](event) {
         const { type, callback } = event.detail;
         if (!type || !callback) throw new Error(`type or cb missing: ${type}, ${callback}`); // TODO
-        if (!this.handlers.has(type)) this.handlers.set(type, []);
-        this.handlers.get(type).push(callback);
+        if (!this[handlers].has(type)) this[handlers].set(type, []);
+        this[handlers].get(type).push(callback);
     },
 
     listen() {
         observerTypes.forEach((type) => {
-            this.addEventListener(type, this.handleEvent.bind(this));
+            this.addEventListener(type, this[handleEvent].bind(this));
         });
-        this.listenToRegistrations();
+        this[listenToRegistrations]();
     },
 
-    handleEvent(event) {
+    [handleEvent](event) {
         const { type, detail } = event;
-        if (!this.handlers.has(type)) return;
-        this.handlers.get(type).forEach(handler => handler(type, modifyEventData(detail)));
+        if (!this[handlers].has(type)) return;
+        this[handlers].get(type).forEach(handler => handler(type, modifyEventData(type, detail)));
     },
 
 });

@@ -5,10 +5,12 @@ class LocationComponent extends HTMLElement{
 
     constructor() {
         super();
-        const modifyData = (type, data) => data;
         Object.assign(
             this,
-            createObservable({ observerTypes: [eventName], modifyEventData: data => data }),
+            createObservable({
+                observerTypes: [eventName],
+                modifyEventData: (type, data) => data,
+            }),
         );
         this.listen();
     }
