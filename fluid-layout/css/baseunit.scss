@@ -1,0 +1,50 @@
+@use "sass:math";
+
+
+// Use unit-less numbers
+$fluid-min-size: 16;
+$fluid-max-size: 18;
+$fluid-min-width: 400;
+$fluid-max-width: 1280;
+
+body {
+    --h-scale: 1.08;
+    @media (min-width: 800px) {
+        --h-scale: 1.11;
+    }
+    @media (min-width: 1000px) {
+        --h-scale: 1.15;
+    }
+    @media (min-width: 1200px) {
+        --h-scale: 1.2;
+    }
+}
+
+$fluid-size-difference: $fluid-max-size - $fluid-min-size;
+$fluid-width-difference: $fluid-max-width - $fluid-min-width;
+
+$fluid-scale-factor: math.div($fluid-size-difference, $fluid-width-difference);
+$width-minus-fluid-min-width: calc(100vw - (#{$fluid-min-width} * 1px));
+$fluid-min-size-in-px: calc(#{$fluid-min-size} * 1px);
+$fluid-max-size-in-px: calc(#{$fluid-max-size} * 1px);
+$base-unit-without-limits: calc(#{$fluid-min-size-in-px} + #{$fluid-scale-factor} * #{$width-minus-fluid-min-width});
+$base-unit: min(#{$fluid-max-size-in-px}, max(#{$fluid-min-size-in-px}, #{$base-unit-without-limits}));
+
+// H scales
+// $fluid-h-scale-difference: $fluid-max-h-scale - $fluid-min-h-scale;
+// $fluid-h-scale-factor: math.div($fluid-h-scale-difference, $fluid-width-difference);
+// $fluid-h-scale-without-limits: calc((#{$fluid-min-h-scale} * 1px) + #{$fluid-h-scale-factor} * #{$width-minus-fluid-min-width});
+// h-scale: min(#{$fluid-max-h-scale}, max(#{$fluid-min-h-scale}, #{$fluid-h-scale-without-limits}));
+
+$base-unit-1-8: calc(#{$base-unit} * 0.125); // 2
+$base-unit-1-4: calc(#{$base-unit} * 0.25);  // 4
+$base-unit-3-8: calc(#{$base-unit} * 0.375); // 6
+$base-unit-1-2: calc(#{$base-unit} * 0.5);   // 8
+$base-unit-3-4: calc(#{$base-unit} * 0.75);  // 12
+$base-unit-1: calc(#{$base-unit});           // 16
+$base-unit-3-2: calc(#{$base-unit} * 1.5);   // 24
+$base-unit-2: calc(#{$base-unit} * 2);       // 32
+$base-unit-3: calc(#{$base-unit} * 3);       // 48
+$base-unit-4: calc(#{$base-unit} * 4);       // 64
+$base-unit-6: calc(#{$base-unit} * 6);       // 96
+

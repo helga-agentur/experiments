@@ -1,0 +1,27 @@
+
+.c-image {
+    margin: $base-unit-3 0;
+    
+    .c-figure {
+        margin-bottom: $base-unit-1-2;
+        margin-left: 0;
+
+        img {
+            width: 100%;
+            max-height: 70vh;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    figcaption {
+        align-self: center;
+        margin-top: $base-unit-1-8;
+        margin-bottom: $base-unit-1-8;
+        font-size: calc(#{$base-unit} * 0.85);
+        line-height: $base-unit-1;    
+    }
+}
+
+
+

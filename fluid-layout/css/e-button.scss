@@ -1,0 +1,13 @@
+.c-button {
+    margin-bottom: $base-unit-2;
+    padding: $base-unit-1-2 $base-unit-2;
+    font-weight: bold;
+    font-size: calc(#{$base-unit} * 1.25);
+    line-height: $base-unit-2;
+    background-color: salmon;
+    border: none;
+
+    &:hover {
+        background-color: deeppink;
+    }
+}
