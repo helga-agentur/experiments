@@ -27,6 +27,7 @@ $max-width: 1600px;
         @return $value;
     }
     @else if ($unit == 'rem') {
+        // Assume 1rem = 16px which is only true for unscaled fonts
         @return makeUnitless($value) * 16px;
     }
     @else {
@@ -80,7 +81,7 @@ $max-width: 1600px;
  * @param {number} $factor      Factor that the layout's fluid base unit should be multiplied with
  */
 @function fluid($factor: 1) {
-    $base: fluidify(16px, 24px);
+    $base: fluidify(16px, 30px);
     @return calc(#{$base} * #{$factor});
 }
 
