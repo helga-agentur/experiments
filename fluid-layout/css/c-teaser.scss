@@ -1,16 +1,16 @@
 .c-teaser {
     grid-column: span 1;
-    margin-top: $base-unit-3;
-    margin-bottom: $base-unit-3;
+    margin-top: fluid(3);
+    margin-bottom: fluid(3);
 
     &__image {
-        margin-bottom: $base-unit-1-2;
+        margin-bottom: fluid(0.5);
 
     }
 
     .e-heading {
-        margin-top: $base-unit;
-        margin-bottom: $base-unit-1-2;
+        margin-top: fluid();
+        margin-bottom: fluid(0.5);
     }
 
     p {

@@ -1,9 +1,9 @@
 .c-button {
-    margin-bottom: $base-unit-2;
-    padding: $base-unit-1-2 $base-unit-2;
+    margin-bottom: fluid(2);
+    padding: fluid(0.5) fluid(2);
     font-weight: bold;
-    font-size: calc(#{$base-unit} * 1.25);
-    line-height: $base-unit-2;
+    font-size: fluid(1.25);
+    line-height: fluid(2);
     background-color: salmon;
     border: none;
 
