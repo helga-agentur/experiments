@@ -1,6 +1,6 @@
 
 .c-section {
-    max-width: min(84vw, #{$max-width} * 1px);
+    max-width: min(84vw, #{$max-width});
     margin: 0 auto;
 }
 

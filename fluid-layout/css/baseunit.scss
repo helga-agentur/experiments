@@ -1,7 +1,7 @@
 @use "sass:math";
 
-$min-width: 400;
-$max-width: 1600;
+$min-width: 400px;
+$max-width: 1600px;
 
 
 /**
@@ -56,16 +56,16 @@ $max-width: 1600;
 @function fluidify($minPropertyValue, $maxPropertyValue, $minWidth: $min-width, $maxWidth: $max-width) {
 
     $propertyDifference: $maxPropertyValue - $minPropertyValue;
-    // Convert propertyDifference to pixels to ensure that the fluid value grows accordingly;
-    // if $min/maxPropertyValue are rem based, fluid value would grow too slow by factor 16 if we
-    // did not convert it to pixels.
+    // Convert propertyDifference to pixels to ensure that the fluid value grows as expected.
+    // If $min/maxPropertyValue are rem based, fluid value would grow slowed down by factor 16 if
+    // we did not convert it to pixels (because $min/maxWidth are pixel-based).
     $propertyDifferenceInPx: toPixels($propertyDifference);
-    // Use unitless value to get a scaleFactor that is not unit-based
-    $widthDifferenceUnitless: makeUnitless($maxWidth - $minWidth);
-    // scaleFactor must be unitless, therefore divide by $minPropertyValue * 0 + 1 which equals
-    // one in $minPropertyValue's value
-    $scaleFactor: math.div(makeUnitless($propertyDifferenceInPx), $widthDifferenceUnitless);
-    // Current screen width that goes over 
+    // scaleFactor must be unitless
+    $scaleFactor: math.div(
+        makeUnitless($propertyDifferenceInPx),
+        makeUnitless($maxWidth - $minWidth)
+    );
+    // Current screen width that goes over $minWidth
     $additionalWidth: calc(100vw - #{$minWidth});
     // Do the magic
     $baseUnitWithoutLimits: calc(#{$minPropertyValue} + #{$scaleFactor} * #{$additionalWidth});
