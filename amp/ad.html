@@ -6,23 +6,32 @@
     <style amp4ads-boilerplate>body{visibility:hidden}</style>
     <title>Hello, AMPs</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-    <style amp4ads-boilerplate>
-        body {
-          visibility: hidden;
-        }
     </style>
     <style amp-custom>
 
+        /* TODO: Move to joinbox.com */
+        @font-face {
+            font-family: "GTWalsheim";
+            src: url("./fonts/GT-Walsheim-Regular.woff2") format("woff2"),
+                url("./fonts/GT-Walsheim-Regular.woff") format("woff");
+            font-weight: 500;
+        }
+        @font-face {
+            font-family: "GTWalsheim";
+            src: url("./fonts/GT-Walsheim-Bold.woff2") format("woff2"),
+                url("./fonts/GT-Walsheim-Bold.woff") format("woff");
+            font-weight: 700;
+        }
         body {
-            font-family: sans-serif;
+            --cycle: 14s;
+            --cycle-count: 2;
+            --easing: cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: 'GTWalsheim', sans-serif;
             min-height: 100vh;
             transition: transform 0.3s var(--easing);
-            --cycle: 13s; /* original: 13s */
-            /* Default easing function */
-            --easing: cubic-bezier(0.4, 0, 0.2, 1);
         }
         body:hover {
-            transform: scale(0.8);
+            transform: scale(0.9);
         }
 
         p { 
@@ -32,13 +41,14 @@
 
         .question {
             padding: 10px;
-            padding-top: 20px;
+            padding-top: 40px;
             position: relative;
             font-size: 2.3rem;
-            line-height: 1.22;
+            line-height: 1.15;
             z-index: 100;
+            letter-spacing: -0.5px;
             transform: translateY(100px);
-            animation: questionPosition var(--cycle) var(--easing) infinite;
+            animation: questionPosition var(--cycle) var(--easing) var(--cycle-count) forwards;
         }
         .words {
             position: relative;
@@ -49,6 +59,7 @@
         .change-word {
             position: absolute;
             opacity: 0;
+            font-weight: 700;
         }
         .change-word--placeholder {
             position: relative;
@@ -56,13 +67,13 @@
             top: 0;
         }
         .change-word--1 {
-            animation: switchWordFirst var(--cycle) var(--easing) infinite;
+            animation: switchWordFirst var(--cycle) var(--easing) var(--cycle-count) forwards;
         }
         .change-word--2 {
-            animation: switchWordMiddle var(--cycle) var(--easing) infinite;
+            animation: switchWordMiddle var(--cycle) var(--easing) var(--cycle-count) forwards;
         }
         .change-word--3 {
-            animation: switchWordLast var(--cycle) var(--easing) infinite;
+            animation: switchWordLast var(--cycle) var(--easing) var(--cycle-count) forwards;
         }
 
         .small-text-perspective {
@@ -75,10 +86,10 @@
         .small-text {
             /* optically adjust padding compared to larger text */
             padding: 15px;
-            padding-top: 5px;
-            font-size: 1rem;
+            padding-top: 10px;
+            font-size: 1.1rem;
             line-height: 1.4;
-            animation: smallText var(--cycle) var(--easing) infinite;
+            animation: smallText var(--cycle) var(--easing) var(--cycle-count) forwards;
         }
 
         .circle {
@@ -97,13 +108,13 @@
             text-align: center;
             line-height: 140px;
             background-color: #FAC840;
-            animation: minifyCircle var(--cycle) var(--easing) infinite;
+            animation: minifyCircle var(--cycle) var(--easing) var(--cycle-count) forwards;
         }
 
         .circle-front-text {
             display: inline-block;
             vertical-align: middle;
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-weight: bold;
             line-height: 1.3;
             /* https://stackoverflow.com/questions/14677490/blurry-text-after-using-css-transform-scale-in-chrome */
@@ -111,7 +122,7 @@
             transform: translateZ(0);
             -webkit-font-smoothing: subpixel-antialiased;
             transform: translateZ(0);
-            animation: circleText var(--cycle) var(--easing) infinite;
+            animation: circleText var(--cycle) var(--easing) var(--cycle-count) forwards;
         }
 
         .circle--back {
@@ -126,10 +137,28 @@
             width: 100px;
         }
 
+        .curtain {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 200;
+            background: white;
+            /* Use a short delay to make sure all intro animations have happened before. Why do
+            we use a curtain? Because the final (100%) value of all animations must represent
+            the static state *after* all animations. Therefore we have to do everything needed
+            to animate between first and second cycle smoothly within the *first* few percent
+            of the animation, not at the end */
+            animation: curtainAnimation var(--cycle) var(--easing) 0.3s 1 forwards;
+        }
+
     </style>
 
   </head>
   <body>
+
+    <div class="curtain"></div>
 
     <div class="circle circle--front">
         <span class="circle-front-text">
@@ -149,7 +178,7 @@
     </p>
     <div class="small-text-perspective">
         <p class="small-text">
-            Zehn begeisterte Drupal-Experten. Ihre <strong>ehrliche Web-Agentur</strong> in Bern.
+            Zehn begeisterte <b>Berner Web-Experten</b>.
         </p>
     </div>
     <svg viewBox="0 0 445.6 73" class="logo">
@@ -168,70 +197,62 @@
 
         <style amp-keyframes>
 
-            /* Assume the whole animation (one loop) takes 20s */
-    
              @keyframes switchWordFirst {
-                0% {
+                4% {
                     opacity: 0;
                     transform: rotateX(-90deg) translateY(-30px);
-                    /* transform: translateY(-20px); */
-                    /* transform: translateY(-50px) rotate3d(1, 0, 0, 45deg) scale(0.5); */
-                    /* filter: blur(10px); */
                 }
-                4%, 10% {
+                8%, 14% {
                     opacity: 1;
                     transform: rotateX(0deg) translateY(0);
-                    /* transform: translateY(0); */
-                    /* filter: blur(0); */
                 }
-                14% {
+                18% {
                     opacity: 0;
                     transform: rotateX(90deg) translateY(30px);
-                    /* transform: translateY(20px); */
-                    /* filter: blur(10px); */
                 }
             }
     
             @keyframes switchWordMiddle {
-                12% {
+                16% {
                     opacity: 0;
                     transform: rotateX(-90deg) translateY(-30px);
-                    /* filter: blur(10px); */
                 }
-                16%, 22% {
+                20%, 26% {
                     opacity: 1;
                     transform: rotateX(0deg) translateY(0);
-                    /* filter: blur(0); */
                 }
-                26% {
+                30% {
                     opacity: 0;
                     transform: rotateX(90deg) translateY(30px);
-                    /* filter: blur(10px); */
                 }
             }
     
     
             @keyframes switchWordLast {
-                24% {
-                    opacity: 0;
-                    transform: rotateX(-90deg) translateY(-30px);
-                    /* filter: blur(10px); */
-                }
-                28%, 95% {
+                0% {
                     opacity: 1;
                     transform: rotateX(0deg) translateY(0);
-                    /* filter: blur(0); */
                 }
-                98% {
+                5%, 22% {
                     opacity: 0;
-                    transform: rotateX(90deg) translateY(30px);
-                    /* filter: blur(10px); */
+                }
+                28% {
+                    opacity: 0;
+                    transform: rotateX(-90deg) translateY(-30px);
+                }
+                32%, 100% {
+                    opacity: 1;
+                    transform: rotateX(0deg) translateY(0);
                 }
             }
     
     
             @keyframes minifyCircle {
-                0%, 55% {
+                0% {
+                    transform: translate(-5px, 420px) scale(1) rotate(-20deg);
+                }
+                /* First frame must correspond to last frame */
+                5%, 55% {
                     transform: translate(-300px, -150px) scale(4);
                 }
                 58% {
@@ -253,17 +274,18 @@
                 86% {
                     transform: translate(-17px, 400px) scale(1.4) rotate(-15deg);
                 }
-                87%, 95% {
+                87%, 100% {
                     transform: translate(-5px, 420px) scale(1) rotate(-20deg);
-                }
-                100% {
-                    transform: translate(-300px, -150px) scale(4);
                 }
             }
     
             @keyframes circleText {
-                /* Together with the circle */
-                0%, 56% {
+                /* Must correspond to last frame */
+                0% {
+                    transform: scale(1);
+                    opacity: 1;
+                }
+                2%, 56% {
                     transform: scale(1.8);
                     opacity: 0;
                 }
@@ -286,41 +308,47 @@
                 86% {
                     transform: scale(1.45);
                 }
-                87%, 93% {
+                87%, 100% {
                     transform: scale(1);
                     opacity: 1;
-                }
-                /* Fade text out early as it will be overlapped by main text */
-                95%, 100% {
-                    opacity: 0;
                 }
             }
     
             @keyframes questionPosition {
-                0%, 38% {
+                0% {
+                    transform: translateY(0);
+                }
+                4%, 42% {
                     transform: translateY(100px);
                 }
-                45%, 96% {
+                49%, 100% {
                     transform: translateY(0);
                 }
             }
     
             @keyframes smallText {
-                0%, 38% {
-                    /* filter: blur(15px); */
+                0%, 4% {
+                    opacity: 0;
+                }
+                4%, 42% {
                     opacity: 0;
                     transform: translateY(75px);
-                    /* transform: translateY(75px) rotateX(-45deg); */
                 }
-                45%, 95% {
-                    /* filter: blur(0); */
+                49%, 100% {
                     opacity: 1;
                     transform: translateY(0px);
                 }
-                98%, 100% {
+            }
+
+            @keyframes curtainAnimation {
+                0% {
+                    opacity: 1;
+                }
+                4%, 100% {
                     opacity: 0;
                 }
             }
+
     
         </style>
 
