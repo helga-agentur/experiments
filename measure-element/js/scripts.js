@@ -61,7 +61,7 @@ const measureElement = ({ element, callback, resizeDebounceInMs = 200 } = {}) =>
   
 }
 
-const executeMeasure = ({ element } = {}) => element.getBoundingClientRect();
+const executeMeasure = ({ element } = {}) => element.getBoundingClientRect();
 
 
 
