@@ -29,18 +29,18 @@ const debounce = (callback, delay) => {
 */
 const measureElement = ({ element, callback, resizeDebounceInMs = 200 } = {}) => {
     if (!element instanceof HTMLElement) {
-        throw new Error(`Argument \'element\' is required and must be an instance of an HTMLElement; you passed ${JSON.stringify(element)} instead.`);
+        throw new Error(`Argument 'element' is required and must be an instance of an HTMLElement; you passed ${JSON.stringify(element)} instead.`);
     }
     if (typeof callback !== 'function') {
-        throw new Error(`Argument \'callback\' is required and must be a function; you passed ${JSON.stringify(callback)} instead.`);
+        throw new Error(`Argument 'callback' is required and must be a function; you passed ${JSON.stringify(callback)} instead.`);
     }
     if (resizeDebounceInMs !== false && typeof resizeDebounceInMs !== 'number') {
-        throw new Error(`Argument \'resizeDebounceInMs\' must be false (if dimensions should not be updated on resize) or a number (with the debounce timeout in ms); you passed ${JSON.stringify(resizeDebounceInMs)} instead.`);
+        throw new Error(`Argument 'resizeDebounceInMs' must be false (if dimensions should not be updated on resize) or a number (with the debounce timeout in ms); you passed ${JSON.stringify(resizeDebounceInMs)} instead.`);
       
     }
 
     // Measure element on init
-    callback(executeMeasure({ element }));
+    callback(element.getBoundingClientRect());
 
     // We always return a function (to prevent users from unnecessary type checking).
     // Therefore if no resize listener is used, we return an "empty" function.
@@ -48,7 +48,7 @@ const measureElement = ({ element, callback, resizeDebounceInMs = 200 } = {}) =>
 
     if (resizeDebounceInMs !== false) {
         const debouncedMeasureFunction = debounce(
-            () => callback(executeMeasure({ element })),
+            () => callback(element.getBoundingClientRect()),
             resizeDebounceInMs,
         );
         window.addEventListener('resize', debouncedMeasureFunction);
@@ -61,7 +61,6 @@ const measureElement = ({ element, callback, resizeDebounceInMs = 200 } = {}) =>
   
 }
 
-const executeMeasure = ({ element } = {}) => element.getBoundingClientRect();
 
 
 
