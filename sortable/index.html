@@ -1,0 +1,29 @@
+<!doctype html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Another Experiment</title>
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/styles.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+
+    <body>
+        <h1>Test</h1>
+        <sort-button data-sort-by="name" data-sortable-identifier="players"><button>Alphabet</button></sort-button>
+        <sort-button data-sort-by="points" data-sortable-identifier="players"><button>Points</button></sort-button>
+        <sortable-list data-sortable-items-selector="li" data-sortable-identifier="players">
+            <ol>
+                <li data-name="a" data-points="5">a/5</li>
+                <li data-name="b" data-points="2">b/2</li>
+                <li data-name="c" data-points="7">c/7</li>
+                <li data-name="d" data-points="3">d/3</li>
+                <li data-name="e" data-points="1">e/1</li>
+            </ol>
+        </sortable-list>
+        <script type="module" src="js/scripts.js"></script>
+    </body>
+
+</html>
