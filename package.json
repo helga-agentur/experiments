@@ -4,6 +4,7 @@
     "sass": "^1.34.1"
   },
   "dependencies": {
-    "parcel": "*"
+    "parcel": "*",
+    "web-push": "^3.4.5"
   }
 }

@@ -1,0 +1,33 @@
+<!doctype html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Gradient Experiment</title>
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/styles.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+
+    <body>
+        <gradient-background></gradient-background>
+        <gradient-change-trigger data-from="#78C0CD" data-to="#12AABD" style="height: 101vh">
+            <h1>101vh</h1>
+        </gradient-change-trigger>
+        <gradient-change-trigger data-from="#253C7F" data-to="#D96770" style="height: 50vh">
+            <h1>50vh</h1>
+        </gradient-change-trigger>
+        <gradient-change-trigger data-from="#253C7F" data-to="#B5B7B7" style="height: 150vh">
+            <h1>150vh</h1>
+        </gradient-change-trigger>
+        <gradient-change-trigger data-from="#12AABD" data-to="#D96770" style="height: 100vh">
+            <h1>100vh</h1>
+        </gradient-change-trigger>
+        <!-- Order matters! We must first setup the listener in GradientBackground before it
+        can catch events dispatched by GradientChangeTrigger-->
+        <script src="js/GradientBackground.js"></script>
+        <script src="js/GradientChangeTrigger.js"></script>
+    </body>
+
+</html>
