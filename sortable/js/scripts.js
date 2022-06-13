@@ -17,11 +17,13 @@ const readAttribute = (
 
 /**
  * Button that executes a sort on a SortableList by dispatching a sortList event that contains
- * all relevant data (sort order and identifier or the SortableList as there might be more than
+ * all relevant data (sort order and identifier of the SortableList as there might be more than
  * one of those on a page).
- * @attribute data-sort-by {String}              Property the SortableList should be sorted by
- * @attribute data-sortable-identifier {String}  Identifier of the SortableList that should be 
- *                                               sorted when the button is pressed.
+ * *
+ * Attributes:
+ * - data-sort-by {String}              Property the SortableList should be sorted by
+ * - data-sortable-identifier {String}  Identifier of the SortableList that should be 
+ *                                      sorted when the button is pressed.
  */
 class SortButton extends HTMLElement {
     connectedCallback() {
@@ -60,14 +62,19 @@ if (!window.customElements.get('sort-button')) {
 
 
 /**
- * Component that executes a sort when a sortList event is caught on window (probably dispatched
- * by SortButton).
- * @attribute data-sortable-identifier {String}  Identifier of the SortableList that should be 
- *                                               sorted when the corresponding button is pressed.
- *                                               Must match attribute of the same name of all
- *                                               SortButtons that should sort this list.
- * @attribute data-sortable-items-selector {String}   Selector for all items that should be sorted
- *                                                    within the component.
+ * Component that sorts a list (via order CSS property) when a sortList event is caught on window
+ * (probably dispatched by SortButton).
+ * IMPORTANT: The sort order is set by the order CSS property on the sortable elements; it is
+ * therefore necessary that the sortable items are flex or grid items.
+ *
+ * Attributes:
+ * - data-sortable-identifier {String}      Identifier of the SortableList that should be 
+ *                                          sorted when the corresponding button is pressed.
+ *                                          Must match attribute of the same name of all
+ *                                          SortButtons that should sort this list.
+ * - data-sortable-items-selector {String}  Selector for all items that should be sorted
+ *                                          within the component.
+ * 
  * Usage: 
  * - Create as many SortButtons as there are properties to sort by
  * - Create SortableList and wrap it around the items that should be sorted
@@ -116,15 +123,11 @@ if (!window.customElements.get('sort-button')) {
         // Return an array of functions that, when executd, will update the DOM to reflect the new
         // sort order. This allows us to only call rAF once.
         const updateFunctions = this.getSortableItems()
-            // @type {value: string, item: HTMLElement}[] where value is the value of the sortField
-            // the items should be sorted by
             .map((element) => ({
                 value: readAttribute(element, `data-${sortFieldName}`),
                 element,
             }))
-            // Sort items by value
             .sort((a, b) => a.value - b.value)
-            // Return a function that updates the DOM
             .map((item, index) => () => item.element.style.order = index);
         window.requestAnimationFrame(() => updateFunctions.forEach(fn => fn()))
     }
