@@ -96,8 +96,6 @@ if (!window.customElements.get('sort-button')) {
             'data-sortable-identifier',
             { validate: value => !!value, expectation: 'a non-empty string' },
         )
-        // Make sure the identifier in the dispatched event matches the current element's
-        // identifier
         if (event?.detail?.sortableIdentifier !== sortableIdentifier) return;
         const sortFieldName = event?.detail?.sortBy;
         if (!sortFieldName) {
