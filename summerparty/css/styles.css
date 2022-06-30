@@ -1,0 +1,19 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 500vh;
+}
+
+.imageWrapper {
+    position: fixed;
+}
+
+.image {
+    position: absolute;
+    height: 544px;
+    width: 734px;
+    top: 0;
+    left: 0;
+    z-index: var(--order);
+    background-color: white;
+}
