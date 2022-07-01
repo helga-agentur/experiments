@@ -14,6 +14,6 @@ html, body {
     width: 734px;
     top: 0;
     left: 0;
-    z-index: var(--order);
+    z-index: var(--z-index);
     background-color: white;
 }

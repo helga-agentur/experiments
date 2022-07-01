@@ -1,3 +1,18 @@
+/**
+ * Revelas images through clip-path while a user scrolls down and hides them again when he
+ * scrolls up.
+ * 
+ * Attributes
+ * - data-scroll-speed (required, float): Speed factor; if factor is 1, for every pixel that a user
+ *                                        scrolls down, 1 pixel of an image is revealed
+ * - data-container-selector (rquired, string): Selector for a HTML element that is used as
+ *                                              scroll container. Its min-height CSS property will
+ *                                              be set so that all images are revealed while
+ *                                              scrolling.
+ * - data-images-selector (required, string). Selector for the HTML elements that should be
+ *                                            relvealed; those must be children of the element.
+ */
+
 class ImageScrollReveal extends HTMLElement {
 
     #images = [];
@@ -27,6 +42,9 @@ class ImageScrollReveal extends HTMLElement {
             throw new Error('Required attribute data-images-selector is missing.');
         }
         this.#images = Array.from(this.querySelectorAll(selector));
+        if (this.#images.length === 0) {
+            console.warn('No images found that match selector %s', selector);
+        }
     }
 
     #setupScrollListener() {
@@ -36,7 +54,7 @@ class ImageScrollReveal extends HTMLElement {
     #handleScroll(event) {
         this.#scrollPosition = window.pageYOffset;
         if (!this.#requestedAnimationFrame) {
-            window.requestAnimationFrame(this.#updateImages.bind(this));
+            this.#requestedAnimationFrame = window.requestAnimationFrame(this.#updateImages.bind(this));
         }
     }
 
@@ -81,9 +99,15 @@ class ImageScrollReveal extends HTMLElement {
         this.#imageHeight = this.#images[0]?.offsetHeight || 0;
     }
 
+    /**
+     * The height of the scroll container must equal at least the height of an image 
+     * multiplied with the amount of images. If not, not all images will be revealed. This method
+     * sets the container's height accordingly (and also respects scrollSpeed)
+     */
     #setContainerHeight() {
         // Container height update is optional; attribute is not required
         const selector = this.dataset.containerSelector;
+        if (!selector) return;
         // For the sake of simplicity, let us select/modify outside of this element's scope
         const container = document.querySelector(selector);
         if (!container) {
