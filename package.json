@@ -4,7 +4,10 @@
     "sass": "^1.34.1"
   },
   "dependencies": {
+    "esbuild": "^0.17.11",
+    "gsap": "^3.11.4",
     "parcel": "*",
+    "three": "^0.150.1",
     "web-push": "^3.4.5"
   }
 }
