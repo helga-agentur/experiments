@@ -2,3 +2,141 @@ html, body {
     margin: 0;
     padding: 0;
 }
+
+body {
+    font-size: 16px;
+    line-height: 1.2;
+    background: #383838;
+    font-family: sans-serif;
+}
+
+ul {
+    padding: 15px;
+}
+
+li::marker {
+    color: #006aa0;
+}
+.c-model {
+    position: relative;
+    height: 200vh;
+}
+
+.c-model__window {
+    width: 100%;
+    min-height: 100vh;
+    position: fixed;
+    display: grid;
+    grid-column-gap: 40px;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 1fr;
+    padding: 50px;
+    box-sizing: border-box;
+}
+
+.c-model__model-viewer {
+    grid-column: 1 / 11;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.c-model__steps {
+    grid-column: 11 / -1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.c-model-step {
+    padding: 8px 40px;
+    background: #fff;
+    border-radius: 20px;
+}
+
+.c-model-step__label {
+    font-weight: bold;
+    color: #006aa0;
+}
+
+.c-model-step__title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-top: 16px;
+    margin-bottom: 32px;
+}
+
+.c-model-step__content {
+    display: none;
+}
+
+.c-model-step--expanded {
+    padding: 16px 40px;
+}
+
+.c-model-step--expanded .c-model-step__label {
+    color: #878787;
+}
+
+.c-model-step--expanded .c-model-step__content {
+    display: block;
+}
+
+.c-model__scroll-section {
+    height: 25%;
+    border-bottom: 1px solid #fff;
+}
+
+.c-model__footer-bar {
+    grid-column: 1 / 12;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.c-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    padding: 10px 24px;
+    cursor: pointer;
+    background: #006aa0;
+    color: #fff;
+    border-radius: 20px;
+    font-weight: bold;
+    appearance: none;
+    border: none;
+}
+
+.c-button__icon {
+    line-height: 1;
+    filter: brightness(0) invert(1);
+}
+
+.c-button__icon img {
+    width: 20px;
+    height: 20px;
+}
+
+
+.c-model-info {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    color: #fff;
+    max-width: 250px;
+    max-width: 250px;
+}
+
+
+.c-model-info__icon {
+    line-height: 1;
+    filter: brightness(0) invert(1);
+}
+
+.c-model-info__icon img {
+    width: 28px;
+    height: 28px;
+}

@@ -11,7 +11,78 @@
     </head>
 
     <body>
-        <h1>Test</h1>
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.0.1/model-viewer.min.js"></script>
+
+        <div class="c-model">
+            <div class="c-model__window">
+
+                <div class="c-model__model-viewer">
+                    <model-viewer alt="MIDOS" src="model/MIDOS_complete.glb" ar environment-image="model/moon_1k.hdr" poster="" shadow-intensity="1" camera-controls touch-action="pan-y" style="height:100%; width: 100%;"></model-viewer>
+                </div>
+
+                <div class="c-model__steps">
+                    <div class="c-model-step">
+                        <div class="c-model-step__label">Setup</div>
+                    </div>
+                    <div class="c-model-step">
+                        <div class="c-model-step__label">Cleaning</div>
+
+                        <div class="c-model-step__content">
+                            <div class="c-model-step__title">Flexible feeding solutions</div>
+                            <img class="c-model-step__image" src="media/Screenshot%202023-03-20%20at%2015.16.23.png">
+
+                            <ul>
+                                <li>Indirect feeding vie feeding belts</li>
+                                <li>Highly constant band size and weight</li>
+                            </ul>
+
+                        </div>
+                    </div>
+                    <div class="c-model-step c-model-step--expanded">
+                        <div class="c-model-step__label">Feeding</div>
+
+                        <div class="c-model-step__content">
+                            <div class="c-model-step__title">Flexible feeding solutions</div>
+                            <img class="c-model-step__image" src="media/Screenshot%202023-03-20%20at%2015.16.23.png">
+
+                            <ul>
+                                <li>Indirect feeding vie feeding belts</li>
+                                <li>Highly constant band size and weight</li>
+                            </ul>
+
+                        </div>
+                    </div>
+                    <div class="c-model-step">
+                        <div class="c-model-step__label">Performance</div>
+                    </div>
+                </div>
+
+                <div class="c-model__footer-bar">
+                    <button class="c-button">
+                        <span class="c-button__icon">
+                            <img src="media/3d-cube.png" alt="">
+                        </span>
+
+                        <span class="c-button__title">View as AR</span>
+                    </button>
+
+                    <div class="c-model-info">
+                        <div class="c-model-info__icon">
+                            <img src="media/rotate.png" alt="">
+                        </div>
+
+                        <div class="c-model-info__title">Use your mouse or finger to rotate and zoom</div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="c-model__scroll-section"></div>
+            <div class="c-model__scroll-section"></div>
+            <div class="c-model__scroll-section"></div>
+            <div class="c-model__scroll-section"></div>
+        </div>
+
         <script type="module" src="./dist/scripts.js"></script>
     </body>
 
