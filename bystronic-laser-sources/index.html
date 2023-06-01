@@ -1,0 +1,55 @@
+<!doctype html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Another Experiment</title>
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/styles.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+
+    <body>
+        <h1>Laser Sources</h1>
+        <p>Simplified laser sources table; used to see if a model-based approach would have simplified things. Solves all relevant/difficult issues, not the easy ones.</p>
+        <laser-sources-table>
+            <laser-source-selector data-laser-source-id="15kw">
+                <input type="checkbox" id="15" checked> <label for="15">15kW</label>
+            </laser-source-selector>
+            <laser-source-selector data-laser-source-id="20kw">
+                <input type="checkbox" id="20"> <label for="20">20kW</label>
+            </laser-source-selector>
+            <material-selector>
+                <select>
+                    <option value="steel-n2">steel (n2)</option>
+                    <option value="copper-mix">copper (mix)</option>
+                </select>
+            </material-selector>
+            <div>
+                <productivity-value data-value="27" data-laser-source-id="15kw" data-material-id="steel-n2" data-thickness="3"></productivity-value>
+                <productivity-value data-value="31" data-laser-source-id="20kw" data-material-id="steel-n2" data-thickness="3"></productivity-value>
+            </div>
+            <div>
+                <productivity-value data-value="21" data-laser-source-id="15kw" data-material-id="steel-n2" data-thickness="5"></productivity-value>
+                <productivity-value data-value="35" data-laser-source-id="20kw" data-material-id="steel-n2" data-thickness="5"></productivity-value>
+            </div>
+            <div>
+                <productivity-value data-value="47" data-laser-source-id="15kw" data-material-id="copper-mix" data-thickness="3"></productivity-value>
+                <productivity-value data-value="61" data-laser-source-id="20kw" data-material-id="copper-mix" data-thickness="3"></productivity-value>
+            </div>
+            <div>
+                <productivity-value data-value="41" data-laser-source-id="15kw" data-material-id="copper-mix" data-thickness="5"></productivity-value>
+                <productivity-value data-value="52" data-laser-source-id="20kw" data-material-id="copper-mix" data-thickness="5"></productivity-value>
+            </div>
+        </laser-sources-table>        
+        <!-- laserSourcesTable must be imported first as it needs to listen to events fired by
+        other components; use an init event that bubbles instead as soon as the main component is
+        ready?-->
+        <script type="module" src="js/laser-sources-table.js"></script>
+        <script type="module" src="js/material-selector.js"></script>
+        <script type="module" src="js/laser-source-selector.js"></script>
+        <script type="module" src="js/productivity-value.js"></script>
+    </body>
+
+</html>

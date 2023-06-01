@@ -1,0 +1,20 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    padding: 20px;
+}
+
+laser-source-selector {
+    display: block;
+}
+
+material-selector {
+    display: block;
+}
+
+productivity-value {
+    margin-right: 20px;
+}
