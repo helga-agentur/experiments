@@ -4,8 +4,9 @@
     "sass": "^1.34.1"
   },
   "dependencies": {
+    "@joinbox/ui-tools": "^1.0.1",
     "esbuild": "^0.17.11",
-    "gsap": "^3.11.4",
+    "gsap": "^3.12.1",
     "parcel": "*",
     "three": "^0.150.1",
     "web-push": "^3.4.5"

@@ -144,7 +144,11 @@ renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.VSMShadowMap;
 renderer.outputEncoding = THREE.sRGBEncoding;
 renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
+// document.body.appendChild(renderer.domElement);
+
+const container = document.querySelector('[data-3d-model-container]');
+console.log(container);
+container.appendChild(renderer.domElement);
 
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.target = cameraTarget;
@@ -252,5 +256,5 @@ const move3 = () => {
     });    
 };
 
-// setTimeout(move1, 1000);
+setTimeout(move1, 1000);
 
