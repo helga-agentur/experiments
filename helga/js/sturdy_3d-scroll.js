@@ -17,7 +17,7 @@ const createStickyRotatingCylinder = (element, totalRotation) => {
     gsap.set(element, {rotationX: -80});
     const timeline = gsap.timeline({
         scrollTrigger: {
-            trigger: ".list-wrapper",
+            trigger: ".home-clients__wrapper",
             markers: true,
             start: 'top center',
             end: 'bottom center',
@@ -110,22 +110,16 @@ console.log('parts', partsPerCircle);
 const rotationPerPx = Math.PI * 2 / circumference;
 console.log('rotPerPx', rotationPerPx / Math.PI * 180, 'wholeCircle', rotationPerPx * circumference / Math.PI * 180);
 
-const newRadius = 280;
-
-elements.forEach((element, index) => {
+elements.reduce((previousHeights, element) => {
     // Rotate backwards … form 360° towards 300°
-    // console.log(prevRotation);
-    const rotation = Math.PI / (elements.length - 1) * index * -1;
-    const yTranslation = Math.sin(rotation) * newRadius;
-    const zTranslation = Math.cos(rotation) * newRadius;
-    console.log(yTranslation, zTranslation);
+    const rotation = Math.PI * 2 - (rotationPerPx * previousHeights);
     // translateZ translates perpendicularily to the surface of the (rotated) element
     const height = getElementHeightWithMargin(element);
     console.log(height);
-
-    element.style.transform = `translate(-50%, -50%) translate3d(0, ${yTranslation * -1}px , ${zTranslation}px) rotateX(${rotation}rad) `;
-    // console.log('prevHeights', previousHeights);
-});
+    // element.style.transform = `rotateX(${(rotation)}rad) translateZ(${radius}px)`;
+    console.log('prevHeights', previousHeights);
+    return previousHeights + height;
+}, 0);
 
 // ul.style.transform = `translateZ(-${radius}px)`;
 
