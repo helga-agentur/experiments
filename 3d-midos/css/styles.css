@@ -18,6 +18,12 @@ ul {
 li::marker {
     color: #006aa0;
 }
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
 .c-model {
     position: relative;
     height: 200vh;
@@ -29,22 +35,23 @@ li::marker {
     position: fixed;
     display: grid;
     grid-column-gap: 40px;
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: minmax(min(400px, 100%), 1fr) minmax(min-content, 295px);
     grid-template-rows: 1fr;
-    padding: 50px;
+    padding: 50px 0;
     box-sizing: border-box;
 }
 
 .c-model__model-viewer {
-    grid-column: 1 / 11;
+    grid-column: 1 / -1;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .c-model__steps {
-    grid-column: 11 / -1;
-    display: flex;
+    grid-column: 2;
+    grid-row: 1;
+    display: none;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
@@ -53,6 +60,8 @@ li::marker {
 
 .c-model-step {
     position: relative;
+    width: 100%;
+    box-sizing: border-box;
     /* Overflow hidden to add rounded corners to scroll indicator */
     overflow: hidden;
     padding: 8px 40px;
@@ -100,7 +109,6 @@ li::marker {
 
 .c-model__scroll-section {
     height: 25vh;
-    /* border-bottom: 1px solid #fff; */
     display: block;
 }
 
@@ -110,10 +118,12 @@ li::marker {
 }
 
 .c-model__footer-bar {
-    grid-column: 1 / 12;
+    grid-column: 1 / -1;
+    grid-row: 2;
     display: flex;
     align-items: center;
     gap: 40px;
+    padding: 0 50px;
 }
 
 .c-button {
@@ -124,6 +134,7 @@ li::marker {
     cursor: pointer;
     background: #006aa0;
     color: #fff;
+    line-height: 20px;
     border-radius: 20px;
     font-weight: bold;
     appearance: none;
@@ -138,18 +149,17 @@ li::marker {
 .c-button__icon img {
     width: 20px;
     height: 20px;
+    display: block;
 }
 
 
 .c-model-info {
-    display: inline-flex;
+    display: none;
     align-items: center;
     gap: 16px;
     color: #fff;
     max-width: 250px;
-    max-width: 250px;
 }
-
 
 .c-model-info__icon {
     line-height: 1;
@@ -159,4 +169,26 @@ li::marker {
 .c-model-info__icon img {
     width: 28px;
     height: 28px;
+}
+
+@media screen and (min-width: 768px) {
+    .c-model__window {
+        padding: 50px;
+    }
+
+    .c-model__model-viewer {
+        grid-column: 1;
+    }
+
+    .c-model__footer-bar {
+        padding: 0;
+    }
+
+    .c-model-info {
+        display: inline-flex;
+    }
+
+    .c-model__steps {
+        display: flex;
+    }
 }

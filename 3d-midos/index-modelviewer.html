@@ -19,7 +19,7 @@
             <div class="c-model__window">
 
                 <midos-model class="c-model__model-viewer">
-                    <model-viewer alt="MIDOS" src="model/MIDOS_complete.glb" 
+                    <model-viewer alt="MIDOS" src="model/MIDOS_complete.glb"
                         ar
                         environment-image="model/moon_1k.hdr"
                         poster=""
@@ -28,10 +28,6 @@
                         interaction-prompt="none"
                         style="height:100%; width: 100%;"
                     >
-
-                        <button slot="ar-button" id="ar-button">
-                            View in your space
-                        </button>
 
                     </model-viewer>
                 </midos-model>
@@ -100,11 +96,11 @@
                 </div>
 
                 <div class="c-model__footer-bar">
-                    <button class="c-button">
+
+                    <button slot="ar-button" id="ar-button" class="c-button">
                         <span class="c-button__icon">
                             <img src="media/3d-cube.png" alt="">
                         </span>
-
                         <span class="c-button__title">View as AR</span>
                     </button>
 
