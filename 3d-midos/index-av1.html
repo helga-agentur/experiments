@@ -1,0 +1,58 @@
+<!doctype html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Another Experiment</title>
+        <link rel="stylesheet" href="./css/normalize.css">
+        <link rel="stylesheet" href="./css/styles.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            .video-container {
+                height: 100vh;
+                width: 100vw;
+                object-fit: contain;
+                position: fixed;
+            }
+            video {
+                max-height: 100%;
+                max-width: 100%;
+            }
+            .scroller {
+                z-index: 100;
+                position: absolute;
+                right: 0;
+                width: 20px;
+                top: 0;
+                height: 200vh;
+                background: linear-gradient(180deg, rgba(0,60,110,1) 0%, rgba(0,60,110,1) 25%, rgba(168,233,177,1) 75%, rgba(168,233,177,1) 100%);
+            }
+            p {
+                color: white;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <p>
+            Encoding settings: <code>ffmpeg -i midos-1.mov -vf scale=960:-1 -movflags faststart -vcodec libx264 -crf 20 -g 1 -pix_fmt yuv420p output-h264.mp4</code>
+        </p>
+
+        <div class="scroller"></div>
+        <div class="video-container">
+            <video muted>
+                <!-- <source type="video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;" src="https://www.apple.com/media/us/mac-pro/2013/16C1b6b5-1d91-4fef-891e-ff2fc1c1bb58/videos/macpro_main_desktop.mp4"></source> -->
+                <!-- <source type="video/mp4" src="https://assets.codepen.io/39255/output_960.mp4"></source> -->
+                <source type="video/mp4" src="media/output-h264.mp4"></source>
+                <!-- <source type="video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;" src="./media/midos-h264.mp4"></source> -->
+                <!-- <source src="./media/midos-out.mp4" type="video/mp4"> -->
+                <!-- <source src="./media/midos-av1.mp4" type="video/webm; codecs=av01.0.05M.08"> -->
+            </video>
+        </div>
+
+        <script type="module" src="./js/video.js"></script>
+    </body>
+
+</html>

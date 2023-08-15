@@ -9,13 +9,126 @@
         <link rel="stylesheet" href="./css/styles.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
-    
+
     <body>
-        <h1>Test</h1>
+
+
         <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.0.1/model-viewer.min.js"></script>
 
-        <!-- Use it like any other HTML element -->
-        <model-viewer alt="MIDOS" src="model/MIDOS_complete.glb" ar environment-image="model/moon_1k.hdr" poster="" shadow-intensity="1" camera-controls touch-action="pan-y" style="height:100vh; width: 100vw;"></model-viewer>
+        <div class="c-model">
+            <div class="c-model__window">
+
+                <midos-model class="c-model__model-viewer">
+                    <model-viewer alt="MIDOS" src="model/MIDOS_complete.glb" 
+                        ar
+                        environment-image="model/moon_1k.hdr"
+                        poster=""
+                        exposure="0"
+                        shadow-intensity="1"
+                        interaction-prompt="none"
+                        style="height:100%; width: 100%;"
+                    >
+
+                        <button slot="ar-button" id="ar-button">
+                            View in your space
+                        </button>
+
+                    </model-viewer>
+                </midos-model>
+
+                <div class="c-model__steps">
+                    <strong-point data-name="setup" class="c-model-step">
+                        <div class="c-model-step__progress"></div>
+                        <div class="c-model-step__label">Setup</div>
+
+                        <div class="c-model-step__content">
+                            <div class="c-model-step__title">Flexible feeding solutions</div>
+                            <img class="c-model-step__image" src="media/Screenshot%202023-03-20%20at%2015.16.23.png">
+
+                            <ul>
+                                <li>Indirect feeding vie feeding belts</li>
+                                <li>Highly constant band size and weight</li>
+                            </ul>
+
+                        </div>
+                    </strong-point>
+                    <strong-point data-name="cleaning" class="c-model-step">
+                        <div class="c-model-step__progress"></div>
+                        <div class="c-model-step__label">Cleaning</div>
+
+                        <div class="c-model-step__content">
+                            <div class="c-model-step__title">Flexible feeding solutions</div>
+                            <img class="c-model-step__image" src="media/Screenshot%202023-03-20%20at%2015.16.23.png">
+
+                            <ul>
+                                <li>Indirect feeding vie feeding belts</li>
+                                <li>Highly constant band size and weight</li>
+                            </ul>
+
+                        </div>
+                    </strong-point>
+                    <strong-point data-name="feeding" class="c-model-step">
+                        <div class="c-model-step__progress"></div>
+                        <div class="c-model-step__label">Feeding</div>
+
+                        <div class="c-model-step__content">
+                            <div class="c-model-step__title">Flexible feeding solutions</div>
+                            <img class="c-model-step__image" src="media/Screenshot%202023-03-20%20at%2015.16.23.png">
+
+                            <ul>
+                                <li>Indirect feeding vie feeding belts</li>
+                                <li>Highly constant band size and weight</li>
+                            </ul>
+
+                        </div>
+                    </strong-point>
+                    <strong-point data-name="performance" class="c-model-step">
+                        <div class="c-model-step__progress"></div>
+                        <div class="c-model-step__label">Performance</div>
+
+                        <div class="c-model-step__content">
+                            <div class="c-model-step__title">Flexible feeding solutions</div>
+                            <img class="c-model-step__image" src="media/Screenshot%202023-03-20%20at%2015.16.23.png">
+
+                            <ul>
+                                <li>Indirect feeding vie feeding belts</li>
+                                <li>Highly constant band size and weight</li>
+                            </ul>
+
+                        </div>
+                    </strong-point>
+                </div>
+
+                <div class="c-model__footer-bar">
+                    <button class="c-button">
+                        <span class="c-button__icon">
+                            <img src="media/3d-cube.png" alt="">
+                        </span>
+
+                        <span class="c-button__title">View as AR</span>
+                    </button>
+
+                    <enable-interactions-button class="c-model-info">
+                        <div class="c-model-info__icon">
+                            <img src="media/rotate.png" alt="">
+                        </div>
+
+                        <!-- <div class="c-model-info__title">Use your mouse or finger to rotate and zoom</div> -->
+                        <div class="c-model-info__title" data-enable-text>Enable rotation and zoom</div>
+                        <div class="c-model-info__title" hidden data-disable-text>Disable rotation and zoom (by mouse or touch)</div>
+                    </enable-interactions-button>
+
+                </div>
+            </div>
+
+            <strong-point-section class="c-model__scroll-section" data-section data-name="setup"></strong-point-section>
+            <strong-point-section class="c-model__scroll-section" data-section data-name="cleaning"></strong-point-section>
+            <strong-point-section class="c-model__scroll-section" data-section data-name="feeding"></strong-point-section>
+            <strong-point-section class="c-model__scroll-section" data-section data-name="performance"></strong-point-section>
+        </div>
+
+        <script type="module" src="./dist/modelviewer.js"></script>
     </body>
 
 </html>
+

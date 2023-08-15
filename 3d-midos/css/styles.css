@@ -6,7 +6,8 @@ html, body {
 body {
     font-size: 16px;
     line-height: 1.2;
-    background: #383838;
+    /* background: #383838; */
+    background: #202020;
     font-family: sans-serif;
 }
 
@@ -51,9 +52,22 @@ li::marker {
 }
 
 .c-model-step {
+    position: relative;
+    /* Overflow hidden to add rounded corners to scroll indicator */
+    overflow: hidden;
     padding: 8px 40px;
     background: #fff;
     border-radius: 20px;
+}
+
+.c-model-step__progress {
+    position: absolute;
+    transform-origin: top;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 8px;
+    background-color: #006aa0;
 }
 
 .c-model-step__label {
@@ -85,8 +99,14 @@ li::marker {
 }
 
 .c-model__scroll-section {
-    height: 25%;
-    border-bottom: 1px solid #fff;
+    height: 25vh;
+    /* border-bottom: 1px solid #fff; */
+    display: block;
+}
+
+.c-model__scroll-section[data-name=setup],
+.c-model__scroll-section[data-name=performance] {
+    height: 60vh;
 }
 
 .c-model__footer-bar {

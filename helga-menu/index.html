@@ -1,0 +1,66 @@
+<!doctype html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Menu Helga</title>
+        <link rel="stylesheet" href="css/normalize.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+
+            .parent {
+                position: relative;
+                display: block;
+            }
+
+            li {
+                display: block;
+                position: relative;
+                float: left;
+                padding-left: 50px;
+            }
+
+            .activeIndicator {
+                position: absolute;
+                left: 28px; /* padding-left of li - offset of highlight */
+                height: 7px;
+                top: 3px;
+                width: 7px;
+                border: 2px solid black;
+                border-radius: 100%;
+                display: inline-block;
+                transform: translateY(1px);
+            }
+            
+            .hoverHighlighter {
+                /* We need a small overlap in order to fill the circle nicely */
+                height: 8px;
+                width: 8px;
+                left: 30px;
+                border-radius: 100%;
+                background-color: black;
+                position: absolute;
+                top: 5px;
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <highlightable-menu class="parent" data-highlight-selector=".hoverHighlighter" data-active-item-selector=".active">
+            <ul>
+                <li><highlightable-menu-item>Projekte</highlightable-menu-item></li>
+                <li><highlightable-menu-item class="active">
+                    <div class="activeIndicator"></div>
+                    <div class="hoverHighlighter"></div>
+                    Kompetenzen
+                </highlightable-menu-item></li>
+                <li><highlightable-menu-item>Team</highlightable-menu-item></li>
+                <li><highlightable-menu-item>Kontakt</highlightable-menu-item></li>
+            </ul>
+        </highlightable-menu>
+        <script type="module" src="js/menu.js"></script>
+    </body>
+
+</html>

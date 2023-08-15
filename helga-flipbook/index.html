@@ -1,0 +1,114 @@
+<!doctype html>
+
+<!-- https://daily-dev-tips.com/posts/creating-a-3d-cylinder-shape-in-css/ -->
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Menu Helga</title>
+        <link rel="stylesheet" href="css/normalize.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            body {
+                font-family: sans-serif;
+            }
+
+            h4 {
+
+            }
+
+            .next-up {
+                margin: 80vh auto 80vh auto;
+                width: 700px;
+                display: flex;
+            }
+
+            .task {
+                padding: 0px;
+                padding-bottom: 300px;
+                /* Without the border, paddings will merge */
+                border: 1px solid transparent;
+            }
+
+            .taskSpacerBelow {
+                /* Make sure image stays sticky until the *end* of the last task is reached:
+                add corresponding bottom */ 
+                height: 350px;
+            }
+
+            .taskSpacerAbove {
+                /* value must correspond to the shift of the .illustrationContainer relative to
+                50% (or more) */
+                height: 250px;
+            }
+
+            .illustrationContainer {
+                flex-shrink: 0;
+                height: 350px;
+                width: 350px;
+                position: sticky;
+                top: calc(50% - 250px);
+                margin-right: 50px;
+            }
+
+            .illustration {
+                position: absolute;
+                top: 0;
+                left: 0;
+                opacity: 0;
+                height: 100%;
+                width: 100%;
+                transition: opacity 100ms;
+            }
+
+            .illustrationContainer > *:first-child {
+                opacity: 1;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <div class="next-up">
+            <div class="illustrationContainer"></div>
+            <div class="tasks">
+                <div class="taskSpacerAbove"></div>
+                <div class="task">
+                    <h4>☑ Aktuelle Recherche</h4>
+                    <h2>1. Du findest zu uns</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+                </div>
+                <div class="task">
+                    <h4>☐ Kontaktaufnahme</h4>
+                    <h2>2. Wir erfahren von dir</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+                </div>
+                <div class="task">
+                    <h4>☐ Kennenlernen und Workshop</h4>
+                    <h2>3. Wir lernen uns kennen</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+                </div>
+                <div class="task">
+                    <h4>☐ Design-Direction und Konzept</h4>
+                    <h2>4. Nun inspirieren wir</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+                </div>
+                <div class="task">
+                    <h4>☐ Mockups und Spezifikation</h4>
+                    <h2>5. Wir fragen, gestalten und dokumentieren</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+                </div>
+                <div class="task">
+                    <h4>☐ Offerte und Umsetzung</h4>
+                    <h2>6. Wir schätzen – und los geht’s!</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+                </div>
+                <div class="taskSpacerBelow"></div>
+            </div>
+        </div>
+
+    </body>
+
+    <script src="js/flipbook.js" type="module"></script>
+
+</html>

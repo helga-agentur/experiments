@@ -11,7 +11,10 @@
     </head>
 
     <body>
-    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.0.1/model-viewer.min.js"></script>
+
+        <!--
+        <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.0.1/model-viewer.min.js"></script>
+        -->
 
         <div class="c-model">
             <div class="c-model__window">
@@ -24,10 +27,23 @@
                 </div>
 
                 <div class="c-model__steps">
-                    <div class="c-model-step">
+                    <strong-point data-name="setup" class="c-model-step">
+                        <div class="c-model-step__progress"></div>
                         <div class="c-model-step__label">Setup</div>
-                    </div>
-                    <div class="c-model-step">
+
+                        <div class="c-model-step__content">
+                            <div class="c-model-step__title">Flexible feeding solutions</div>
+                            <img class="c-model-step__image" src="media/Screenshot%202023-03-20%20at%2015.16.23.png">
+
+                            <ul>
+                                <li>Indirect feeding vie feeding belts</li>
+                                <li>Highly constant band size and weight</li>
+                            </ul>
+
+                        </div>
+                    </strong-point>
+                    <strong-point data-name="cleaning" class="c-model-step">
+                        <div class="c-model-step__progress"></div>
                         <div class="c-model-step__label">Cleaning</div>
 
                         <div class="c-model-step__content">
@@ -40,8 +56,9 @@
                             </ul>
 
                         </div>
-                    </div>
-                    <div class="c-model-step c-model-step--expanded">
+                    </strong-point>
+                    <strong-point data-name="feeding" class="c-model-step">
+                        <div class="c-model-step__progress"></div>
                         <div class="c-model-step__label">Feeding</div>
 
                         <div class="c-model-step__content">
@@ -54,10 +71,22 @@
                             </ul>
 
                         </div>
-                    </div>
-                    <div class="c-model-step">
+                    </strong-point>
+                    <strong-point data-name="performance" class="c-model-step">
+                        <div class="c-model-step__progress"></div>
                         <div class="c-model-step__label">Performance</div>
-                    </div>
+
+                        <div class="c-model-step__content">
+                            <div class="c-model-step__title">Flexible feeding solutions</div>
+                            <img class="c-model-step__image" src="media/Screenshot%202023-03-20%20at%2015.16.23.png">
+
+                            <ul>
+                                <li>Indirect feeding vie feeding belts</li>
+                                <li>Highly constant band size and weight</li>
+                            </ul>
+
+                        </div>
+                    </strong-point>
                 </div>
 
                 <div class="c-model__footer-bar">
@@ -80,10 +109,10 @@
                 </div>
             </div>
 
-            <div class="c-model__scroll-section"></div>
-            <div class="c-model__scroll-section"></div>
-            <div class="c-model__scroll-section"></div>
-            <div class="c-model__scroll-section"></div>
+            <strong-point-section class="c-model__scroll-section" data-section data-name="setup"></strong-point-section>
+            <strong-point-section class="c-model__scroll-section" data-section data-name="cleaning"></strong-point-section>
+            <strong-point-section class="c-model__scroll-section" data-section data-name="feeding"></strong-point-section>
+            <strong-point-section class="c-model__scroll-section" data-section data-name="performance"></strong-point-section>
         </div>
 
         <script type="module" src="./dist/scripts.js"></script>
