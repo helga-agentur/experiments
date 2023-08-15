@@ -34,7 +34,7 @@ class StrongPoint extends HTMLElement {
             // Scroll so that the element's top aligns to the window's center
             window.scrollBy({
                 left: 0,
-                top: top - (window.innerHeight / 2) + 1,
+                top: top - (window.innerHeight / 2) + 10,
                 behavior: 'smooth',
             });
         });
@@ -48,7 +48,7 @@ class StrongPoint extends HTMLElement {
             this.#requestedAnimationFrame = null;
         });
     }
-    
+
     #executeScrollProgressIndicatorUpdate() {
         this.#scrollProgressIndicator.style.transform = `scaleY(${this.#scrollProgress})`;
         this.style.transform = `translateY(${this.#scrollProgress * -10}px)`;
