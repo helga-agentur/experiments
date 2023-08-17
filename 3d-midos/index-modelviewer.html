@@ -29,6 +29,25 @@
                         style="height:100%; width: 100%;"
                     >
 
+                        <button slot="ar-button" id="ar-button" class="c-model__ar-button c-button">
+                            <span class="c-button__icon">
+                                <img src="media/3d-cube.png" alt="">
+                            </span>
+                            <span class="c-button__title">View as AR</span>
+                        </button>
+
+                        <enable-interactions-button class="c-model-info c-model-info--mobile">
+                            <div class="c-model-info__icon">
+                                <img src="media/rotate.png" alt="">
+                            </div>
+
+                            <!-- <div class="c-model-info__title">Use your mouse or finger to rotate and zoom</div> -->
+                            <div class="c-model-info__title" data-enable-text>Enable rotation and zoom</div>
+                            <div class="c-model-info__title" hidden data-disable-text>Disable rotation and zoom (by
+                                mouse or touch)
+                            </div>
+                        </enable-interactions-button>
+
                     </model-viewer>
                 </midos-model>
 
@@ -97,21 +116,16 @@
 
                 <div class="c-model__footer-bar">
 
-                    <button slot="ar-button" id="ar-button" class="c-button">
-                        <span class="c-button__icon">
-                            <img src="media/3d-cube.png" alt="">
-                        </span>
-                        <span class="c-button__title">View as AR</span>
-                    </button>
-
-                    <enable-interactions-button class="c-model-info">
+                    <enable-interactions-button class="c-model-info c-model-info--desktop">
                         <div class="c-model-info__icon">
                             <img src="media/rotate.png" alt="">
                         </div>
 
                         <!-- <div class="c-model-info__title">Use your mouse or finger to rotate and zoom</div> -->
                         <div class="c-model-info__title" data-enable-text>Enable rotation and zoom</div>
-                        <div class="c-model-info__title" hidden data-disable-text>Disable rotation and zoom (by mouse or touch)</div>
+                        <div class="c-model-info__title" hidden data-disable-text>Disable rotation and zoom (by
+                            mouse or touch)
+                        </div>
                     </enable-interactions-button>
 
                 </div>

@@ -37,7 +37,7 @@ img {
     grid-column-gap: 40px;
     grid-template-columns: minmax(min(400px, 100%), 1fr) minmax(min-content, 295px);
     grid-template-rows: 1fr;
-    padding: 50px 0;
+    padding: 20px 0;
     box-sizing: border-box;
 }
 
@@ -117,6 +117,12 @@ img {
     height: 60vh;
 }
 
+.c-model__ar-button {
+    position: absolute;
+    top: 50px;
+    left: 20px;
+}
+
 .c-model__footer-bar {
     grid-column: 1 / -1;
     grid-row: 2;
@@ -154,14 +160,26 @@ img {
 
 
 .c-model-info {
-    display: none;
+    display: flex;
     align-items: center;
     gap: 16px;
     color: #fff;
     max-width: 250px;
+    cursor: pointer;
+}
+
+.c-model-info--desktop {
+    display: none;
+}
+
+.c-model-info--mobile {
+    position: absolute;
+    left: 20px;
+    top: 0;
 }
 
 .c-model-info__icon {
+    flex-shrink: 0;
     line-height: 1;
     filter: brightness(0) invert(1);
 }
@@ -190,5 +208,13 @@ img {
 
     .c-model__steps {
         display: flex;
+    }
+
+    .c-model-info--mobile {
+        display: none;
+    }
+
+    .c-model-info--desktop {
+        display: inline-flex;
     }
 }
