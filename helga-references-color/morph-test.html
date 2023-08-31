@@ -1,0 +1,68 @@
+<!doctype html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Another Experiment</title>
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/styles.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            .basic-from {
+                background-color: red;
+                position: absolute;
+                top: 50px;
+                left: 20px;
+                width: 80px;
+                height: 40px;
+            }
+            .basic-from-container {
+                /* test scroll position */
+                top: 95vh;
+                position: relative;
+                padding: 100px;
+                margin: 50px;
+                padding-bottom: 100vh;
+            }
+            .basic-to-container {
+                position: static;
+                padding: 50px;
+                left: 20px;
+                top: 20px;
+            }
+            .basic-to {
+                background-color: blue;
+                width: 60px;
+                height: 60px;
+                border-radius: 20px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="basic-from-container">
+            <div class="basic-from"></div>
+            <div class="basic-to-container">
+                <div class="basic-to"></div>
+            </div>
+        </div>
+        <script type="module">
+            import morph from './js/morph.js';
+
+            const from = document.querySelector('.basic-from');
+            document.addEventListener('click', () => {
+                morph(
+                    from,
+                    document.querySelector('.basic-to'),
+                    {
+                        morphProperties: ['backgroundColor', 'borderRadius', 'width', 'height'],
+                        duration: 0.6,
+                    },
+                );
+                from.hidden = true;
+            });
+        </script>
+    </body>
+
+</html>

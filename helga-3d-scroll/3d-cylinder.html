@@ -1,0 +1,73 @@
+<!doctype html>
+
+<!-- https://daily-dev-tips.com/posts/creating-a-3d-cylinder-shape-in-css/ -->
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Menu Helga</title>
+        <link rel="stylesheet" href="css/normalize.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+
+            .holder {
+                transform-style: preserve-3d;
+                perspective: 200vh;
+                /* transform: rotate3d(1, 0.25, 0.25, 45deg); */
+            }
+
+            @keyframes spin {
+                to {
+                    transform: rotateX(-360deg);
+                }
+            }
+
+            .cylinder {
+                --pi: 3.14;
+                --radius: 50vh;
+                --circumference: calc(var(--pi) * var(--radius) * 2);
+                --sides: 50;
+                --faceRotation: calc(360deg / var(--sides));
+                --faceWidth: calc(var(--circumference) / var(--sides));
+                --faceShift: calc(var(--radius));
+                position: relative;
+                height: 100vh;
+                width: 100vw;
+                top: 50vh;
+                transform-style: preserve-3d;
+                /* animation: spin 7s infinite linear; */
+            }
+
+            .face {
+                position: absolute;
+                background-color: #da0060;
+                opacity: 0.7;
+                width: 50vw;
+                height: var(--faceWidth);
+                left: calc(50% - 25vw);
+                transform: rotateX(calc(var(--faceRotation) * var(--index))) translateZ(calc(var(--faceShift) - -6px));
+                /* transform: rotateX(calc(var(--faceRotation) * var(--index))) translateX(-50%); */
+                /* transform: rotateX(45deg) translateZ(var(--faceShift)); */
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <div class="holder">
+            <div class="cylinder">
+
+            </div>
+        </div>
+    </body>
+
+    <script>
+        const sides = 50;
+        const cylinder = document.querySelector('.cylinder');
+        const faces = Array.from({ length: sides }).map((_, index) => (
+            `<div class='face' style='--index: ${index}'></div>`
+        ));
+        cylinder.innerHTML = faces.join('');
+    </script>
+
+</html>

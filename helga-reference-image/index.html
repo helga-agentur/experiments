@@ -1,0 +1,95 @@
+<!doctype html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Another Experiment</title>
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/styles.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            .image-container {
+                width: 840px;
+                margin: 0 auto;
+                margin-top: 180vh;
+                display: flex;
+                justify-content: space-around;
+                perspective: 1200px;
+            }
+            .reference {
+                width: 360px;
+            }
+            body {
+                height: 300vh;
+                font-family: sans-serif;
+            }
+            h1 {
+                font-size: 2.4rem;
+            }
+            p {
+                font-size: 1.2rem;
+                line-height: 160%;
+            }
+            reference-image {
+                display: block;
+                transform-origin: middle middle;
+            }
+            .text-container {
+                width: 600px;
+                margin: 0 auto;
+            }
+            .word {
+                margin-right: 0.25em;
+            }
+            .letter, .word {
+                display: inline-block;
+            }
+            h1 .letter {
+                opacity: 0.1;
+                /* transform: translateY(0.5em); */
+                transition: opacity calc(0.8s) ease-out calc(0.2s + 0.01s * var(--letter-index));
+            }
+            p .word {
+                opacity: 0.14;
+                transition: opacity calc(0.6s) ease-in-out calc(0.32s + 0.007s * var(--word-index));
+            }
+            h1.visible .letter {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            p.visible .word {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>Test</h1>
+
+        <div class="image-container">
+            <reference-image
+                data-initial-rotation-z="-4.8"
+                data-final-rotation-z="-2.2"
+                data-initial-rotation-y="6"
+                data-final-rotation-y="2"
+            ><img class="reference" src="img/embolo.png" /></reference-image>
+            <reference-image
+                data-initial-rotation-z="5.3"
+                data-final-rotation-z="2"
+                data-initial-rotation-y="-8"
+                data-final-rotation-y="-4"
+            ><img class="reference" src="img/sfv.png" /></reference-image>
+        </div>
+        <div class="text-container">
+            <h1 data-animation-visible-class="visible" data-animation-element-name="trigger">Credit Suisse Skills by SFV</h1>
+            <p data-animation-visible-class="visible" data-animation-trigger="trigger">Reale Welt trifft auf digitale Gamification: Menschen und Teams spielen miteinander um Preise – und gewinnen dabei fussballerische und soziale Kompetenz.</p>
+        </div>
+
+        <!-- Run  npx esbuild js/index.js --bundle --sourcemap --outdir=dist --watch -->
+        <script type="module" src="dist/index.js"></script>
+
+    </body>
+
+</html>

@@ -22,13 +22,22 @@
     </head>
 
     <body>        
-        <video src="media/felix-av1.mp4" muted autoplay controls loop></video>
-        <video src="media/felix-av1.mp4" muted autoplay controls loop></video>
-        <video src="media/felix-av1.mp4" muted autoplay controls loop></video>
-        <video src="media/felix-av1.mp4" muted autoplay controls loop></video>
-        <video src="media/felix-av1.mp4" muted autoplay controls loop></video>
-        <video src="media/felix-av1.mp4" muted autoplay controls loop></video>
-        <video src="media/felix-av1.mp4" muted autoplay controls loop></video>
+        <video src="media/andi.mp4" muted autoplay loop></video>
+        <video src="media/felix.mp4" muted autoplay loop></video>
+        <video src="media/hudson.mp4" muted autoplay loop></video>
+        <video src="media/raphael.mp4" muted autoplay loop></video>
+        <video src="media/roberta.mp4" muted autoplay loop></video>
+        <video src="media/sandra.mp4" muted autoplay loop></video>
+        <video src="media/sandro.mp4" muted autoplay loop></video>
+        <video src="media/simu.mp4" muted autoplay loop></video>
+        <video src="media/tobias.mp4" muted autoplay loop></video>
     </body>
+
+    <script>
+        [...document.querySelectorAll('video')].forEach((video) => {
+            video.muted = true;
+            video.play();
+        });
+    </script>
 
 </html>
