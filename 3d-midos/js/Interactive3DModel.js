@@ -155,6 +155,7 @@ export default class {
         this.#camera = new THREE.PerspectiveCamera(60, this.#width / this.#height, 0.1, 1000);
         this.#camera.position.set(2, 4, 3);
         const cameraTarget = new THREE.Vector3(0, 1, 0);
+        this.#camera.frustrum = 0.1;
         this.#camera.lookAt(cameraTarget);
 }
 
