@@ -1,0 +1,35 @@
+<!doctype html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Another Experiment</title>
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/styles.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            img {
+                width: 600px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>Test</h1>
+        <wheel-of-fortune data-winning-probability="0.9">
+            <img src="media/wheel.png" data-wheel/>
+        </wheel-of-fortune>
+        <script type="module" src="js/WheelOfFortune.js"></script>
+        <script type="module">
+            import WheelOfFortune from './js/WheelOfFortune.js';
+            WheelOfFortune.defineCustomElement();
+            const wheel = document.querySelector('wheel-of-fortune');
+            document.body.addEventListener('click', wheel.spin.bind(wheel));
+            window.addEventListener('spinEnd', ({ detail: { isWinning }} ) => {
+                alert(`Win? ${isWinning}.`);
+            });
+        </script>
+    </body>
+
+</html>
